@@ -1,0 +1,1 @@
+The specs for classes will be released on Sunday August 12th.
