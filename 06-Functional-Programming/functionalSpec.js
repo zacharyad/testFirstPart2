@@ -175,9 +175,7 @@ describe('the function reduce', () => {
 // Use reduce inside a sum function that takes an array of integers
 describe('the sum function', () => {
   it('uses reduce to add up the numbers in an array', () => {
-    spyOn(window, 'reduce').and.callThrough();
     expect(sum([1, 2, 3])).toEqual(6);
-    expect(reduce).toHaveBeenCalled();
   });
 });
 
@@ -192,7 +190,7 @@ describe('the function every', () => {
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
   beforeEach(() => {
     spyOn(Array.prototype, 'every').and.callThrough();
-    spyOn(window, 'reduce').and.callThrough();
+    spyOn(Array.prototype, 'reduce').and.callThrough();
   });
 
   const isEven = num => {
@@ -216,14 +214,11 @@ describe('the function every', () => {
     expect(every([0, 11, 28], isEven)).toEqual(false);
   });
 
-  it('should not use Array.prototype.every', () => {
+  it('should not use Array.prototype.every or Array.prototype.reduce', () => {
     every([1, 2, 3], isEven);
     expect(Array.prototype.every.calls.any()).toEqual(false);
-  });
-
-  it('should re-use the reduce function created in previous specs', () => {
-    every([0, 10, 28], isEven);
-    expect(reduce).toHaveBeenCalled();
+    expect(Array.prototype.reduce.calls.any()).toEqual(false);
+    // use the reduce method you created in these exercises instead
   });
 });
 
@@ -232,7 +227,7 @@ describe('the function any', () => {
   // this is similar to the every function, but only one value needs to meet the
   // condition of the callback function.
   beforeEach(() => {
-    spyOn(window, 'reduce').and.callThrough();
+    spyOn(Array.prototype, 'reduce').and.callThrough();
   });
 
   const isEven = number => {
@@ -251,8 +246,9 @@ describe('the function any', () => {
     expect(any([1, 10, 29], isEven)).toEqual(true);
   });
 
-  it('should re-use the reduce function created in previous specs', () => {
+  it('should not use the Array.prototype.reduce method', () => {
     any([0, 10, 28], isEven);
-    expect(reduce).toHaveBeenCalled();
+    expect(Array.prototype.reduce.calls.any()).toEqual(false);
+    // use the reduce method you created in these exercises instead
   });
 });
