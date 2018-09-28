@@ -1,3 +1,7 @@
+/* eslint-env jasmine */
+/* eslint-disable no-undef */
+
+
 /*
 
 The following test specs challenge your imperative programming ability! The main
@@ -8,18 +12,43 @@ map and reduce.
 
 /*
 
+Warmup - Re-Implement the Array.prototype.forEach method
+
+*/
+
+describe('the function forEach', () => {
+  beforeEach(() => {
+    // A spy is set to check if Array.prototype.forEach is called
+    spyOn(Array.prototype, 'forEach').and.callThrough();
+    spyOn(console, 'log').and.callThrough();
+  });
+
+  it('console.log every value in the array individually', () => {
+    forEach(['soccer', 'swimming', 'softball', 'water-polo'], sport =>
+      console.log(sport)
+    );
+
+    expect(console.log).toHaveBeenCalledWith('soccer');
+    expect(console.log).toHaveBeenCalledWith('swimming');
+    expect(console.log).toHaveBeenCalledWith('softball');
+    expect(console.log).toHaveBeenCalledWith('water-polo');
+  });
+});
+
+/*
+
 Re-Implement the Array.prototype.map method
 
 */
 
 describe('the function map', () => {
   beforeEach(() => {
-    // A spy is set to check if Array.prototype.map is called.
+    // A spy is set to check if Array.prototype.map is called
     spyOn(Array.prototype, 'map').and.callThrough();
   });
 
   // Where is doubler defined? This is something you may need to create...
-  it('first, create a function that takes an element and returns double of it', () => {
+  it('create a function that takes an element and returns double of it', () => {
     expect(doubler(15)).toEqual(30);
   });
 

@@ -18,3 +18,7 @@ Code written in a functional style strives to be modular, readable, and testable
 This will give you a better understanding of each method. Even though you need to create them using an Imperative approach, you will have a better grasp on when and how to use the built-in methods when practicing declarative programming.
 
 <hr>
+
+#### Use Array Methods
+
+There is another section called "use array methods" where you will have to use the built-in Array.prototype methods you created in the first section!

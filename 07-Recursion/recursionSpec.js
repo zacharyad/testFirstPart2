@@ -1,3 +1,7 @@
+/* eslint-env jasmine */
+/* eslint-disable no-undef */
+
+
 // Given some number, n, factorial should
 // compute n * (n-1) * (n-2) ... * 1
 describe('the function factorial', () => {
@@ -7,18 +11,130 @@ describe('the function factorial', () => {
     it('correctly computes factorial', () => {
       let result = factorialIterative(10);
       let expected = 3628800;
-      expect(result).toEqual(expected);
+      expect(result).toBe(expected);
     });
   });
 
   describe('recursive approach', () => {
     it('handles the base case', () => {
-      expect(factorial(0)).toEqual(1);
+      expect(factorial(0)).toBe(1);
     });
     it('correctly comptues factorial', () => {
       expect(factorial(10)).toEqual(3628800);
       expect(factorial(4)).toEqual(24);
     });
+    it('calls itself recursively', () => {
+      /* 
+        NOTE: This is a test spec that determines if the factorial function calls itself recursively 
+        In order to make this spec work properly, the function needs to be declared as a function declaration:
+          function factorial() {
+          }
+        You can't use an expression:
+          const factorial = function() {}
+          const factorial = () => {}
+        There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+        be able to recognize the function if declared with an expression.
+      */
+
+      spyOn(window, 'factorial').and.callThrough();
+
+      factorial(12);
+
+      // checks if `factorial` is called more than once (if it is recursive, it will be called more than one time)
+      expect(factorial.calls.count()).toBeGreaterThan(1);
+    });
+  });
+});
+
+describe('sumTheDigits', () => {
+  it('sums all the numbers in the array', () => {
+    expect(sumTheDigits([1, 2, 3, 4, 5])).toBe(15);
+    expect(sumTheDigits([11, 12, 13])).toBe(36);
+    expect(sumTheDigits([55, 7000, 22, 9876])).toBe(16953);
+    expect(sumTheDigits([5, 4, 3, 2, 1])).toBe(15);
+  });
+  it('calls itself recursively', () => {
+    /* 
+      NOTE: This is a test spec that determines if the sumTheDigits function calls itself recursively 
+      In order to make this spec work properly, the function needs to be declared as a function declaration:
+        function sumTheDigits() {
+        }
+      You can't use an expression:
+        const sumTheDigits = function() {}
+        const sumTheDigits = () => {}
+      There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+      be able to recognize the function if declared with an expression.
+    */
+
+    spyOn(window, 'sumTheDigits').and.callThrough();
+
+    sumTheDigits([8, 4, 0, 8, 5]);
+
+    // checks if `sumTheDigits` is called more than once (if it is recursive, it will be called more than one time)
+    expect(sumTheDigits.calls.count()).toBeGreaterThan(1);
+  });
+});
+
+describe('countTheVowels', () => {
+  it('returns the total amount of vowels in a string (a,e,i,o,u are considered vowels, ignore y)', () => {
+    expect(countTheVowels("you miss 100% of the shots you don't take")).toBe(
+      11
+    );
+    expect(countTheVowels("there's no place like home")).toBe(9);
+    expect(countTheVowels('dubble bubble bubble gum')).toBe(7);
+  });
+  it('calls itself recursively', () => {
+    /* 
+      NOTE: This is a test spec that determines if the countTheVowels function calls itself recursively 
+      In order to make this spec work properly, the function needs to be declared as a function declaration:
+        function countTheVowels() {
+        }
+      You can't use an expression:
+        const countTheVowels = function() {}
+        const countTheVowels = () => {}
+      There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+      be able to recognize the function if declared with an expression.
+    */
+
+    spyOn(window, 'countTheVowels').and.callThrough();
+
+    countTheVowels('whats going on?');
+
+    // checks if `countTheVowels` is called more than once (if it is recursive, it will be called more than one time)
+    expect(countTheVowels.calls.count()).toBeGreaterThan(1);
+  });
+});
+
+describe('recSmallestInt', () => {
+  it('returns the smallest integer', () => {
+    let smallest = recSmallestInt([8, 4, 2, 8, 5]);
+    expect(smallest).toEqual(2);
+  });
+
+  it('returns the smallest integer, when negative', () => {
+    let smallest = recSmallestInt([5, 4, 0, 8, -5]);
+    expect(smallest).toEqual(-5);
+  });
+
+  it('calls itself recursively', () => {
+    /* 
+      NOTE: This is a test spec that determines if the recSmallestInt function calls itself recursively 
+      In order to make this spec work properly, the function needs to be declared as a function declaration:
+        function recSmallestInt() {
+        }
+      You can't use an expression:
+        const recSmallestInt = function() {}
+        const recSmallestInt = () => {}
+      There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+      be able to recognize the function if declared with an expression.
+    */
+
+    spyOn(window, 'recSmallestInt').and.callThrough();
+
+    recSmallestInt([8, 4, 0, 8, 5]);
+
+    // checks if `recSmallesInt` is called more than once (if it is recursive, it will be called more than one time)
+    expect(recSmallestInt.calls.count()).toBeGreaterThan(1);
   });
 });
 
@@ -39,6 +155,26 @@ describe('recursive fibonacci', () => {
   });
   it('correctly computes the 23rd fibonacci number', () => {
     expect(fib(22)).toEqual(28657);
+  });
+  it('calls itself recursively', () => {
+    /* 
+      NOTE: This is a test spec that determines if the fib function calls itself recursively 
+      In order to make this spec work properly, the function needs to be declared as a function declaration:
+        function fib() {
+        }
+      You can't use an expression:
+        const fib = function() {}
+        const fib = () => {}
+      There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+      be able to recognize the function if declared with an expression.
+    */
+
+    spyOn(window, 'fib').and.callThrough();
+
+    fib(5);
+
+    // checks if `fib` is called more than once (if it is recursive, it will be called more than one time)
+    expect(fib.calls.count()).toBeGreaterThan(1);
   });
 });
 
@@ -140,9 +276,30 @@ describe('the function stringify', () => {
 
     // You might find Array.prototype.join useful.
     it('does not use native string conversion', () => {
-      spyOn(Array.prototype, 'toString');
+      spyOn(Array.prototype, 'toString').and.callThrough();
       stringify([1, 2, 3]);
       expect(Array.prototype.toString).not.toHaveBeenCalled();
+    });
+
+    it('calls itself recursively', () => {
+      /* 
+        NOTE: This is a test spec that determines if the stringify function calls itself recursively 
+        In order to make this spec work properly, the function needs to be declared as a function declaration:
+          function stringify() {
+          }
+        You can't use an expression:
+          const stringify = function() {}
+          const stringify = () => {}
+        There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+        be able to recognize the function if declared with an expression.
+      */
+
+      spyOn(window, 'stringify').and.callThrough();
+
+      stringify([4, 6, 7]);
+
+      // checks if `stringify` is called more than once (if it is recursive, it will be called more than one time)
+      expect(stringify.calls.count()).toBeGreaterThan(1);
     });
   });
 
@@ -179,6 +336,26 @@ describe('the function stringify', () => {
       const expected =
         '{"a":{"b":true,"c":[null,{"d":1}],"e":{"f":"abc"}},"g":undefined}';
       expect(result).toEqual(expected);
+    });
+    it('calls itself recursively', () => {
+      /* 
+        NOTE: This is a test spec that determines if the stringify function calls itself recursively 
+        In order to make this spec work properly, the function needs to be declared as a function declaration:
+          function stringify() {
+          }
+        You can't use an expression:
+          const stringify = function() {}
+          const stringify = () => {}
+        There isn't anything fundamentally wrong with creating the function with an expression, but the test specs won't
+        be able to recognize the function if declared with an expression.
+      */
+
+      spyOn(window, 'stringify').and.callThrough();
+
+      stringify({ a: 'a', b: [null, { d: 1 }] });
+
+      // checks if `stringify` is called more than once (if it is recursive, it will be called more than one time)
+      expect(stringify.calls.count()).toBeGreaterThan(1);
     });
   });
 });
