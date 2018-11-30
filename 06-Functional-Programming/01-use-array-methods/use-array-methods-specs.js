@@ -150,7 +150,9 @@ describe('using reduce', () => {
           'Costa Rica',
         ])
       ).toBe(539893000);
-      expect(getPopulation(arrayOfCountries, [])).toBe(2117902300);
+
+      // If the second argument is an empty array ([]) as it is below, add the population off all the countries from the first argument
+      expect(getPopulation(arrayOfCountries, [])).toBe(2117902300); // the number returned is the total population of all the countries in the arrayOfCountries array.
     });
 
     it('calls Array.prototype.reduce', () => {
