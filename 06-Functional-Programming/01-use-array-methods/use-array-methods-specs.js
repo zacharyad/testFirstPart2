@@ -52,7 +52,7 @@ describe('using map', () => {
       expect(capitalize('daydream')).toBe('DAYDREAM');
     });
 
-    it('the swapCase functions uses Array.prototype.map and calls the capitalize function every other word', () => {
+    it('the swapCase functions uses Array.prototype.map and calls the capitalize function on every other word', () => {
       // HINT: the optional parameter "index" of the callback function may be handy :) https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map#Syntax
       expect(swapCase('i am going to the movies today')).toBe(
         'I am GOING to THE movies TODAY'
