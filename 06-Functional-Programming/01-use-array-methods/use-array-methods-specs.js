@@ -93,7 +93,7 @@ describe('using filter', () => {
         extensionSearch('txt', [
           'hello.txt',
           'hello.png',
-          'hell.csv',
+          'hello.csv',
           'mlb.txt',
           'mls.png',
         ])
