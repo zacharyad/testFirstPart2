@@ -222,7 +222,7 @@ describe('using reduce', () => {
       },
     ];
     describe('refactor superheroes', () => {
-      it('keyifyArrayObjects refactors the superheroes array to an object with the alias as the property(keys) and the value is the superhero object that has that alias', () => {
+      it('keyifyArrayOfObjects refactors the superheroes array to an object with the alias as the property(keys) and the value is the superhero object that has that alias', () => {
         const superheroesObject = keyifyArrayOfObjects('alias', superheroes);
         const expectSuperheroesObject = {
           Batman: {
