@@ -224,7 +224,7 @@ describe('using reduce', () => {
     describe('refactor superheroes', () => {
       it('keyifyArrayOfObjects refactors the superheroes array to an object with the alias as the property(keys) and the value is the superhero object that has that alias', () => {
         const superheroesObject = keyifyArrayOfObjects('alias', superheroes);
-        const expectSuperheroesObject = {
+        const expectedSuperheroeObject = {
           Batman: {
             name: 'Bruce Wayne',
             alias: 'Batman',
@@ -282,7 +282,7 @@ describe('using reduce', () => {
             race: 'Human',
           },
         };
-        expect(superheroesObject).toEqual(expectSuperheroesObject);
+        expect(superheroesObject).toEqual(expectedSuperheroeObject);
       });
       it('uses the Array.prototype.reduce method', () => {
         spyOn(Array.prototype, 'reduce').and.callThrough();
