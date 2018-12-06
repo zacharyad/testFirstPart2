@@ -1,12 +1,11 @@
 /* eslint-env jasmine */
 /* eslint-disable no-undef */
 
-
 /*
 
 The following test specs challenge your imperative programming ability! The main
-theme of each spec is to re-implement the traditional functional methods such as 
-map and reduce. 
+theme of each spec is to re-implement the traditional functional methods such as
+map and reduce.
 
 */
 
@@ -52,21 +51,21 @@ describe('the function map', () => {
     expect(doubler(15)).toEqual(30);
   });
 
-  /* 
-  
+  /*
+
   Now let's use the `doubler` function and apply it over an
    entire array using a custom map function (that you need to create)
 
    the doubler function is only responsible for taking an input and returning
    an output, it doesn't produce side effects, it is a "pure" function
-   
+
    the map function is responsible for
    - creating a new array
    - looping over the array argument
    - applying the function to each item in the array
    - storing the new values returned in the new array
    - returning the new array (the new array should be the same length as the original)
-   
+
 
   */
 
@@ -95,7 +94,7 @@ describe('the function map', () => {
    the function argument on each value. if the function returns
    true the value is added to the new array filter creates.
    - filter returns an array that qualifies the condition tested
-   in the function argument. 
+   in the function argument.
    - The array filter returns can vary
    in length (unlike the map function that that returns an
    array with the same length as the original)
