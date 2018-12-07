@@ -61,4 +61,21 @@ function sum(arr) {
   return reduce(arr, 0, (a, b) => a + b);
 }
 
-function every(arr, callback) {}
+function every(arr, callback) {
+  let isTrue = false;
+
+  if (arr.length === 0) return true;
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) isTrue = true;
+    else return false;
+  }
+  return isTrue;
+}
+
+function any(arr, callback) {
+  if (arr.length === 0) return false;
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i])) return true;
+  }
+  return false;
+}
